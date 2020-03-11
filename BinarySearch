@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main() {
+    int i;
+    int const size = 10;
+    int array[size] = {1, 2, 3, 4, 5, 6 ,7, 8, 9, 11};
+    int low = 0;
+    int high = 9;
+    int mid;
+
+    cin >> i;
+
+    while (low <= high) {
+        mid = (low + high) / 2;
+        if (array[mid] == i) {
+            return mid;
+        }
+        if (array[mid] < i) {
+            low = mid + 1;
+        }
+        if (array[mid] > i) {
+            high = mid - 1;
+        }
+    }
+
+    return -1;
+}
