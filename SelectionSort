@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main() {
+    int const size = 10;
+    int array[size] = { 9,3,2,5,7,4,8,3,65,1 };
+
+    for (int i = 0; i < size - 1; ++i) {
+        int min = i;
+        for (int number = i + 1; number < size; ++number) {
+            if (array[number] < array[min])
+                min = number;
+        }
+
+        swap(array[i], array[min]);
+
+    }
+    for (int i = 0; i < size; ++i) {
+        cout << array[i] << ' ';
+    }
+    return 0;
+}
