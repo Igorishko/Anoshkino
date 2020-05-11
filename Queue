@@ -1,0 +1,60 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+void WORRY(vector<int>& queue, int i) { //ф-ия для беспокоющихся
+	queue[i] = 1;
+}
+void QUIET(vector<int>& queue, int i) { //ф-ия для успокоившихся
+	queue[i] = 0;
+}
+void COME(vector<int>& queue, int i) { //ф-ия для пришедших или ушедших
+	if (i >= 0) {                      //если пришли
+		queue.resize(queue.size() + i, 0);
+	}
+	else {                            //если ушли
+		for (int c = 0; c < -i; c++) {
+			queue.pop_back();
+		}
+	}
+}
+void WORRY_COUNT(vector<int>& queue) { // ф-ия подсчёта беспокоющихся
+	int quantity = 0;
+	for (auto c : queue) {
+		if (c == 1) {
+			quantity++;
+		}
+	}
+	cout << quantity << endl;
+}
+
+int main() {
+	int q; // кол-во комманд
+	string command; // вводимые команды
+	vector<int> queue; // вектор очереди
+	int counter = 0; // счётчик
+	int i;
+	cin >> q;
+	while (counter < q) {
+		counter++;
+		cin >> command;
+		if (command == "WORRY") { // для беспокоющихся
+			cin >> i;
+			WORRY(queue, i);
+		}
+		if (command == "QUIET") { // для успокоившихся
+			cin >> i;
+			QUIET(queue, i);
+		}
+		if (command == "COME") { // для пришедших или ушедших
+			cin >> i;
+			COME(queue, i);
+		}
+		if (command == "WORRY_COUNT") { // подсчёт волнующихся
+			WORRY_COUNT(queue);
+		}
+	}
+	return 0;
+}
