@@ -7,7 +7,7 @@ using namespace std;
 int main() {
     int N, a;
     vector<int> v;
-    cout << "Enter your number: ";
+    cout << "Enter number: ";
     cin >> N;
     while (N > 0) {      
         a = N % 2;       
