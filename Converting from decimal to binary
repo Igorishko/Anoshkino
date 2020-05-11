@@ -1,0 +1,23 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int N, a;
+    vector<int> v;
+    cout << "Enter your number: ";
+    cin >> N;
+    while (N > 0) {      
+        a = N % 2;       
+        v.push_back(a);
+        N = N / 2;
+    }
+    
+    reverse(begin(v), end(v));
+    for (auto i : v) {
+        cout << i;
+    }
+    return 0;
+}
